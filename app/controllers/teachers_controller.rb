@@ -6,6 +6,7 @@ class TeachersController < ApplicationController
 
   def show
     render(text: "This is one teacher.")
+    @last_name = LastName.find_by_slug(params[:last_name])
   end
 
 end
