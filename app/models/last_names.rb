@@ -1,4 +1,4 @@
-class LastName < ActiveRecord::Base
+class LastNames < ActiveRecord::Base
   attr_accessible :id, :last_name, :slug
 
   validates_presence_of :slug
