@@ -1,8 +1,10 @@
 class LastName < ActiveRecord::Base
-  attr_accessible :id, :last_name
+  attr_accessible :id, :last_name, :slug
+
+  validates_presence_of :slug
 
   def to_param
-    "#{last_name}"
+    slug
   end
 
 end
