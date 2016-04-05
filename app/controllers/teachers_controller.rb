@@ -1,7 +1,7 @@
-class TeacherController < ApplicationController
+class TeachersController < ApplicationController
 
   def index
-    render(text: "You've hit the teacher's index page.")
+    render(text: "You've hit the teachers index page.")
   end
 
   def show
