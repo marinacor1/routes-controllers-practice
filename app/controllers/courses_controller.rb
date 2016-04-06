@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
 
   def index
-    render(text: "You've hit the courses index page.")
+    all_courses = Course.pluck(:name).join(", ")
+    render(text: "#{all_courses}")
   end
 
   def new
@@ -13,7 +14,9 @@ class CoursesController < ApplicationController
   end
 
   def show
-    render(text: "You've hit the courses show page.")
+    correct_course = Course.find_by(id: params["id"])
+    students = correct_course.students
+    render(text: "#{correct_course}")
   end
 
   def edit
