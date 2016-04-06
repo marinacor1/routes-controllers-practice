@@ -15,8 +15,8 @@ class CoursesController < ApplicationController
 
   def show
     correct_course = Course.find_by(id: params["id"])
-    students = correct_course.students
-    render(text: "#{correct_course}")
+    students = correct_course.students.map {|student| student.first_name}.join(", ")
+    render(text: "Students in #{correct_course.name}: #{students}")
   end
 
   def edit
