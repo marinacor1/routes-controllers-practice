@@ -6,9 +6,13 @@ class StudentsController < ApplicationController
   end
 
   def show
-    all_students_addresses = Student.pluck(:first_name).join(", ")
-    all_addresses = Address.pluck(:current).join(", ")
-    render(text: "#{all_students_addresses} #{all_addresses}")
+    # render(text: "#{params["id"]}")
+    # params = {"controller"=>"students", "action"=>"show", "id"=>"3"}
+    correct_student = Student.find_by(id: params["id"])
+    first_name = correct_student.first_name
+    correct_current_address = correct_student.addresses.map {|a| a.current}
+    correct_permanent_address = correct_student.addresses.map {|a| a.permanent}
+    render(text: "#{first_name}:" "#{correct_current_address}" "#{correct_permanent_address}")
   end
 
 end
